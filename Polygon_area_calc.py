@@ -2,6 +2,8 @@ class Rectangle:
     def __init__(self, width, height):
         self.width = width
         self.height = height
+    def __str__(self):
+        return(f'Rectangle(width={self.width}, height={self.height})')
     def set_width(self, width):
         if width <= 0:
             raise ValueError("Width has to be positive")
@@ -20,9 +22,28 @@ class Rectangle:
     def get_picture(self):
         picture = ""
         for _ in range(self.height):
-            ("*" * self.width) + "\n"
-        return picture
+            row = ("*" * self.width) + "\n"
+            picture += row
+            return picture
+    def get_amount_inside(self):
+        pass
+
+class Square(Rectangle):
+    def __init__(self, side):
+        super().__init__(side, side)
+    def set_width(self, side):
+        if side <= 0:
+            raise ValueError("Side has to be positive")
+        self.side = side  
+    def set_height(self, side):
+        if side <= 0:
+            raise ValueError("Length has to be positive")
+        self.side = side
+        
+        
 rect = Rectangle(10, 5)
 print(rect.get_area())
 print(rect.get_perimeter())
 print(rect.get_diagonal())
+print(rect.get_picture())
+print(rect)
